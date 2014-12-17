@@ -25,6 +25,12 @@ if (!isset($_GET['script'])) {
             font-family: Arial, Sans;
         }
 
+        #ads {
+            margin-right: auto;
+            margin-left: auto;
+            width: 340px;
+        }
+
         #container {
             position: relative;
             border: 1px solid #000;
@@ -126,15 +132,17 @@ if (!isset($_GET['script'])) {
     
         </script>
 
-<!-- Adsense -->
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Comedia ad -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:320px;height:100px"
-     data-ad-client="ca-pub-1241131205896179"
-     data-ad-slot="7257820885"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+        <!-- Adsense -->
+        <div id="ads">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Comedia ad -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:320px;height:100px"
+                 data-ad-client="ca-pub-1241131205896179"
+                 data-ad-slot="7257820885"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
     </body>
 </html>
