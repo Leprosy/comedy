@@ -1,18 +1,20 @@
-[
-    {
-        img: "kramer1.gif",
-        time: 4000,
-        caption: "Ya a ver...cual de los weoncitos me va a agarrar el manhuaco wn.."
-    },
-    {
-        img: "george1.gif",
-        time: 5000,
-        caption: "Sale maricon CTM que wea!"
-    },
-    {
-        img: "bean1.gif",
-        time: 7000,
-        caption: "...oh el par de wecos no ma"
-    }
-]
-
+{
+    "title": "Kramer se va en volá",
+    "content": [
+        {
+            "img": "kramer1.gif",
+            "time": 4000,
+            "caption": "Ya a ver...cual de los weoncitos me va a agarrar el manhuaco wn.."
+        },
+        {
+            "img": "george1.gif",
+            "time": 5000,
+            "caption": "Sale maricon CTM que wea!"
+        },
+        {
+            "img": "bean1.gif",
+            "time": 7000,
+            "caption": "...oh el par de wecos no ma"
+        }
+    ]
+}
