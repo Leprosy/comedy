@@ -82,7 +82,16 @@
             }, scene[i].time);
         }
 
+        /* Start */
+        // Preload images
+        for (j = 0; j < scene.length; ++j) {
+            var image = new Image();
+            image.src = 'img/' + scene[j].img;
+        }
+
+        // Load first slide
         nextSlide();
+
         </script>
     </body>
 </html>
