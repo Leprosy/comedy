@@ -12,7 +12,7 @@ if (isset($_POST['title'])) {
     	$obj["content"][] = $subobj;
     }
 
-    $filename = md5(time());
+    $filename = substr(md5(time()), 0 ,10);
     $file = fopen(__DIR__ . "/scripts/" . $filename, "w");
     fwrite($file, json_encode($obj));
     fclose($file);
