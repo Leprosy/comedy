@@ -19,52 +19,53 @@ if (!isset($_GET['script'])) {
 <!DOCTYPE html>
 <html>
     <head>
-    <title><?php echo $script->title ?> - Comedia barata</title>
-    <style>
-    body {
-        font-family: Arial, Sans;
-    }
-    
-    #container {
-        position: relative;
-        border: 1px solid #000;
-        height: 400px;
-        width: 500px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    #captions {
-        position: absolute;
-        bottom: 0;
-        width: 460px;
-        background-color: #666;
-        opacity: 0.8;
-        text-align: center;
-        font-size: 18px;
-        color: #fff;
-        font-weight: bold;
-        padding: 20px;
-        text-shadow: 1px 1px 1px #000;
-    }
-    
-    footer {
-        margin-top: 50px;
-        text-align: center;
-        font-size: 12px;
-    }
-    
-    #title {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        font-size: 20px;
-        font-weight: bold;
-        text-align: center;
-    }
-    </style>
-    <meta charset="UTF-8">
-    <title>Comedia</title>
-    
+        <title><?php echo $script->title ?> - Comedia barata</title>
+        <style>
+        body {
+            font-family: Arial, Sans;
+        }
+        
+        #container {
+            position: relative;
+            border: 1px solid #000;
+            height: 400px;
+            width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        #captions {
+            position: absolute;
+            bottom: 0;
+            width: 460px;
+            background-color: #666;
+            opacity: 0.8;
+            text-align: center;
+            font-size: 18px;
+            color: #fff;
+            font-weight: bold;
+            padding: 20px;
+            text-shadow: 1px 1px 1px #000;
+        }
+        
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 12px;
+        }
+        
+        #title {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+        </style>
+        <meta charset="UTF-8">
+        <meta name="Description" content="Comedia estúpida, generada por los propios usuarios..." />
+        <meta property="og:image" content="img/kramer1.gif"/>
+
     </head>
     <body>
         <div id="title"><?php echo $script->title ?></div>
