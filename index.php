@@ -19,7 +19,7 @@ if (!isset($_GET['script'])) {
 <!DOCTYPE html>
 <html>
     <head>
-        <title><?php echo $script->title ?> - Comedia Barata</title>
+        <title><?php echo $script->title ?> - Comedia Barata y Estúpida</title>
         <style>
         body {
             font-family: Arial, Sans;
