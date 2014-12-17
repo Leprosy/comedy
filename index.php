@@ -1,3 +1,11 @@
+<?php 
+if (!isset($_GET['script'])) {
+    die('Script is needed for our funny commediants');
+} else {
+	$script = file_get_contents(__DIR__ . '/scripts/' . $_GET['script']);
+}
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -44,23 +52,7 @@
         <footer>(c) <?php echo date('Y') ?> Leprosystems</footer>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>
-        var scene = [
-                {
-                    img: "kramer1.gif",
-                    time: 4000,
-                    caption: "Hey...what's the deal with airplane peanuts..."
-                },
-                {
-                    img: "george1.gif",
-                    time: 5000,
-                    caption: "Come on...I like peanuts!"
-                },
-                {
-                    img: "bean1.gif",
-                    time: 7000,
-                    caption: "..."
-                }
-        ]
+        var scene = <?php echo $script ?>
 
         var i = 0;
 
