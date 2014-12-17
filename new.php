@@ -17,7 +17,7 @@ if (isset($_POST['title'])) {
     fwrite($file, json_encode($obj));
     fclose($file);
 
-    header('Location: index.php?script=' . $filename);
+    header('Location: ' . $filename);
 } else {
     ?><!DOCTYPE html>
 <html>
