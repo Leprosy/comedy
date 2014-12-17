@@ -41,7 +41,7 @@
             <div id="captions">Cargando...</div>
         </div>
 
-        <footer>(c) 2014 Leprosystems</footer>
+        <footer>(c) <?php echo date('Y') ?> Leprosystems</footer>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>
         var scene = [
