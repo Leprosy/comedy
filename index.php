@@ -19,7 +19,7 @@ if (!isset($_GET['script'])) {
 <!DOCTYPE html>
 <html>
     <head>
-        <title><?php echo $script->title ?> - Comedia barata</title>
+        <title><?php echo $script->title ?> - Comedia Barata</title>
         <style>
         body {
             font-family: Arial, Sans;
@@ -68,6 +68,19 @@ if (!isset($_GET['script'])) {
 
     </head>
     <body>
+
+<!-- Tracking -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-8155451-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
         <div id="title"><?php echo $script->title ?></div>
         <div id="container">
             <img width="500" height="400" src="" />
