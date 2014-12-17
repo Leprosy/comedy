@@ -1,0 +1,2 @@
+RewriteRule    ^/([a-z0-9]+)/?$    index.php?script=$1    [NC,L]    # Handle product requests
+

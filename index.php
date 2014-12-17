@@ -24,7 +24,7 @@ if (!isset($_GET['script'])) {
         body {
             font-family: Arial, Sans;
         }
-        
+
         #container {
             position: relative;
             border: 1px solid #000;
@@ -33,7 +33,7 @@ if (!isset($_GET['script'])) {
             margin-left: auto;
             margin-right: auto;
         }
-        
+
         #captions {
             position: absolute;
             bottom: 0;
@@ -47,13 +47,13 @@ if (!isset($_GET['script'])) {
             padding: 20px;
             text-shadow: 1px 1px 1px #000;
         }
-        
+
         footer {
             margin-top: 50px;
             text-align: center;
             font-size: 12px;
         }
-        
+
         #title {
             margin-top: 20px;
             margin-bottom: 20px;
@@ -73,40 +73,39 @@ if (!isset($_GET['script'])) {
             <img width="500" height="400" src="" />
             <div id="captions">Cargando...</div>
         </div>
-    
+
         <footer>(c) <?php echo date('Y') ?> Leprosystems</footer>
         <script
             src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>
-            var scene = <?php echo json_encode($script->content) ?>
-    
+            var scene = <?php echo json_encode($script->content) ?>;
             var i = 0;
-    
+
             function changeSlide(src, caption) {
                 $('#container img').attr('src', 'img/' + src);
                 $('#captions').html(caption);
             }
-    
+
             function nextSlide() {
                 changeSlide(scene[i].img, scene[i].caption);
                 setTimeout(function() {
                     ++i;
-    
+
                     if (i == scene.length) {
                         i = 0;
                     }
-    
+
                     nextSlide();
                 }, scene[i].time);
             }
-    
+
             /* Start */
             // Preload images
             for (j = 0; j < scene.length; ++j) {
                 var image = new Image();
                 image.src = 'img/' + scene[j].img;
             }
-    
+
             // Load first slide
             $( window ).load(function() {
                 nextSlide();
