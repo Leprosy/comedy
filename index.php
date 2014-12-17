@@ -64,7 +64,7 @@ if (!isset($_GET['script'])) {
         </style>
         <meta charset="UTF-8">
         <meta name="Description" content="Comedia estúpida, generada por los propios usuarios..." />
-        <meta property="og:image" content="img/kramer1.gif"/>
+        <meta property="og:image" content="http://comedia.l3pro.com/img/kramer1.gif"/>
 
     </head>
     <body>
