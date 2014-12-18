@@ -36,7 +36,7 @@ if (isset($_POST['title'])) {
             border: 1px solid #000;
             overflow: auto;
             background-color: #fff;
-            width: 450px;
+            width: 550px;
             padding: 10px;
             box-shadow: 1px 1px 20px #000;
         }
