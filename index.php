@@ -1,6 +1,6 @@
 <?php
 if (!isset($_GET['script'])) {
-    die( 'Script is needed for our funny commediants');
+    die('Script is needed for our funny commediants');
 } else {
     $path = __DIR__ . '/scripts/' . $_GET ['script'];
     
@@ -93,7 +93,12 @@ if (!isset($_GET['script'])) {
             <div id="captions">Cargando...</div>
         </div>
 
-        <footer>(c) <?php echo date('Y') ?> Leprosystems</footer>
+        <footer>
+            <iframe style="width: 80px;height: 20px;" src="//www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fcomedia.l3pro.com%2F<?php echo $_GET['script'] ?>&amp;layout=button" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowTransparency="true"></iframe>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script><br />
+            (c) <?php echo date('Y') ?> Leprosystems
+        </footer>
         <script
             src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>
