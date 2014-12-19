@@ -47,7 +47,7 @@ if (isset($_POST['title'])) {
                 while (false !== ($entry = readdir($handle))) {
                 	if ($entry!='.' && $entry!='..') {
                 		?>
-                		<a class="th" href="#" onclick="setAnim(this)"><img src="upimg/<?php echo $entry ?>" /></a>
+                		<a class="th" href="javascript:void(0)" onclick="setAnim(this)"><img src="upimg/<?php echo $entry ?>" /></a>
                 		<?php
                 	}
                 }
