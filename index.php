@@ -147,7 +147,6 @@ if (!isset( $script->title )) {
             $( window ).load(function() {
                 nextSlide();
             })
-
         </script>
     </body>
 </html>

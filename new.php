@@ -19,59 +19,35 @@ if (isset($_POST['title'])) {
 
     header('Location: ' . $filename);
 } else {
-    ?><!DOCTYPE html>
+    ?><!doctype html>
 <html>
     <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Editor de la comedia estúpida, generada por los propios usuarios..." />
+        <meta property="og:image" content="http://comedia.l3pro.com/upimg/kramer1.gif"/>
+        <title>Editor de diálogos - Comedia Estúpida y Barata</title>
+        <link rel="stylesheet" href="css/foundation.min.css" />
+        <script src="js/vendor/modernizr.js"></script>
         <style>
-        body {
-            font-family: Arial, sans;
-            font-size: 12px;
-        }
-        #imgs {
-            display: none;
-            position: absolute;
-            margin-left: auto;
-            margin-right: auto;
-
-            border: 1px solid #000;
-            overflow: auto;
-            background-color: #fff;
-            width: 550px;
-            padding: 10px;
-            box-shadow: 1px 1px 20px #000;
-        }
-        #imgs img {
-            float: left;
-            margin-right: 10px;
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-        ul { width:0; margin-bottom: 30px; }
-        li {
-            list-style-type: none;
-            text-align: right;
-            margin-bottom: 5px;
-        }
-        li input {
-            padding: 5px;
-        }
-
+            #imgs img {
+                width: 60px;
+                height: 60px;
+            }
         </style>
-        <script
-            src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <meta charset="UTF-8">
     </head>
+
     <body>
-        <div id="imgs">
-            Elija animación: <br />
+        <div id="imgs" class="reveal-modal" data-reveal>
+            <h3>Elija animación:</h3>
             <?php
-            
+
             if ($handle = opendir(__DIR__ . '/upimg/')) {
                 /* This is the correct way to loop over the directory. */
                 while (false !== ($entry = readdir($handle))) {
                 	if ($entry!='.' && $entry!='..') {
-                		?><img src="upimg/<?php echo $entry ?>" width="100" height="100"
-                		onclick="setAnim(this.src)" />
+                		?>
+                		<a class="th" href="#" onclick="setAnim(this)"><img src="upimg/<?php echo $entry ?>" /></a>
                 		<?php
                 	}
                 }
@@ -79,24 +55,60 @@ if (isset($_POST['title'])) {
                 closedir($handle);
             }
             ?>
+
+            <a class="close-reveal-modal">&#215;</a>
         </div>
+
         <form action="new.php" method="post">
-            Título: <input name="title" size="60" />
-            <hr />
-            <h3>Contenido:</h3>
-            <div id="frames">
-                <ul>
-                    <li>Animación: <input name="img[]" onclick="selectImg(this)" /></li>
-                    <li>Texto: <input name="caption[]" size="60" /></li>
-                    <li>Duración: <input name="time[]" type="number" min="1000" max="60000" step="500" size="4" value="5000" /></li>
-                </ul>
+            <div class="row">
+                <h3>Crea tu diálogo</h3>
             </div>
 
-            <input type="button" value="Agregar otro cuadro" onclick="addFrame()" />
-            <hr />
-            <input type="submit" value="Guardar" onclick="return valid()" />
+            <div class="row">
+                <div class="large-12 columns">
+                  <label>Título del Dialogo
+                    <input type="text" name="title" placeholder="Elija un título interesante..." />
+                  </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-12 columns" id="frames">
+                    <fieldset>
+                        <legend>Cuadro 1:</legend>
+                        <div class="large-6 columns">
+                            <label>Imagen:
+                                <input type="text" name="img[]" onclick="selectImg(this)" />
+                            </label>
+                        </div>
+
+                        <div class="large-6 columns">
+                            <label>Duración:
+                                <input name="time[]" type="number" value="3000" step="500" min="1000" max="60000" />
+                            </label>
+                        </div>
+
+                        <div class="large-12 columns">
+                            <label>Texto:
+                                <textarea name="caption[]" placeholder="Acá va el texto de este cuadro(opcional)..." rows="4"></textarea>
+                            </label>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-12 columns">
+                    <a class="tiny radius button info" href="javascript:addFrame()">Agregar otro cuadro</a>
+                    <input type="submit" class="tiny radius button" value="Guardar" onclick="return valid()" />
+                </div>
+            </div>
         </form>
+
+        <script src="js/vendor/jquery.js"></script>
+        <script src="js/foundation.min.js"></script>
         <script>
+            $(document).foundation();
             var elem = null;
 
             function valid() {
@@ -106,31 +118,31 @@ if (isset($_POST['title'])) {
                         valid = false
             	    } 
                 });
-    
+
         	    if (!valid) {
             	    alert('Complete los campos');
         	    }
-    
+
         	    return valid;
         	}
 
             function addFrame() {
-                var frame = $('#frames ul:last-child').clone();
+                var frame = $('#frames fieldset:last-child').clone();
+                frame.children()[0].innerHTML = "Cuadro " + (1 + $('#frames fieldset').length) +" :";
                 $('#frames').append(frame);
             }
 
-            function setAnim(path) {
-                path = path.split('/').pop();
+            function setAnim(an) {
+                var path = an.children[0].src.split('/').pop();
                 elem.value = path;
-                $('#imgs').fadeOut()
+                $('#imgs').foundation('reveal', 'close');
             }
 
             function selectImg(el) {
                 elem = el;
-                $('#imgs').fadeIn()
+                $('#imgs').foundation('reveal', 'open');
             }
-            
-        	</script>
+        </script>
     </body>
 </html>
 <?php 
