@@ -66,11 +66,11 @@ if (isset($_POST['title'])) {
             Elija animación: <br />
             <?php
             
-            if ($handle = opendir(__DIR__ . '/img/')) {
+            if ($handle = opendir(__DIR__ . '/upimg/')) {
                 /* This is the correct way to loop over the directory. */
                 while (false !== ($entry = readdir($handle))) {
                 	if ($entry!='.' && $entry!='..') {
-                		?><img src="img/<?php echo $entry ?>" width="100" height="100"
+                		?><img src="upimg/<?php echo $entry ?>" width="100" height="100"
                 		onclick="setAnim(this.src)" />
                 		<?php
                 	}

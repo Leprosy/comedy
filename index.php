@@ -1,112 +1,125 @@
 <?php
-if (!isset($_GET['script'])) {
-    die('Script is needed for our funny commediants');
-} else {
+if (isset($_GET['script'])) {
     $path = __DIR__ . '/scripts/' . $_GET ['script'];
-    
-    if (!file_exists( $path )) {
-        die("Script is invalid(or not very funny)");
-    } else {
+
+    if (file_exists( $path )) {
         $script = json_decode( file_get_contents($path) );
-        
-        if (!isset( $script->title )) {
-            die("Script is invalid(or not very funny)");
-        }
     }
+}
+
+if (!isset( $script->title )) {
+    die("Script is invalid(or not very funny)");
 }
 ?>
 
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="no-js" lang="en">
     <head>
-        <title><?php echo $script->title ?> - Comedia Barata y Estúpida</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Comedia estúpida, generada por los propios usuarios..." />
+        <meta property="og:image" content="http://comedia.l3pro.com/upimg/<?php echo $script->content[0]->img ?>"/>       
+        <title><?php echo $script->title ?> - Comedia Estúpida y Barata</title>
+        <link rel="stylesheet" href="css/foundation.min.css" />
+        <script src="js/vendor/modernizr.js"></script>
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5494544d7a549c3b" async="async"></script>
+        
         <style>
-        body {
-            font-family: Arial, Sans;
-        }
-
-        #ads {
-            margin-right: auto;
-            margin-left: auto;
-            width: 340px;
-        }
-
-        #container {
-            position: relative;
-            border: 1px solid #000;
-            height: 400px;
-            width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        #captions {
-            position: absolute;
-            bottom: 0;
-            width: 460px;
-            background-color: #666;
-            opacity: 0.8;
-            text-align: center;
-            font-size: 18px;
-            color: #fff;
-            font-weight: bold;
-            padding: 20px;
-            text-shadow: 1px 1px 1px #000;
-        }
-
-        footer {
-            margin-top: 50px;
-            text-align: center;
-            font-size: 12px;
-        }
-
-        #title {
-            margin-top: 20px;
-            margin-bottom: 20px;
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-        }
+            /* Comedia - Leprosystems */
+            .share {}
+            .footer, .comedy {
+                text-align: center;
+            }
+            .comedy h3 {
+                font-weight: bold;
+                text-shadow: 0 0 8px #999;
+            }
+            #container {
+                position: relative;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .comedy img, #container {
+                width: 80vw;
+                height: 80vw;
+                max-width: 650px;
+                max-height: 650px;
+            }
+            #container #captions {
+                width: 80vw;
+                max-width: 650px;
+                bottom: 0;
+                position: absolute;
+                color: #fff;
+                font-size: 1.5em;
+                text-shadow: 2px 2px 1px #000;
+                font-weight: bold;
+            }
         </style>
-        <meta charset="UTF-8">
-        <meta name="Description" content="Comedia estúpida, generada por los propios usuarios..." />
-        <meta property="og:image" content="http://comedia.l3pro.com/img/<?php echo $script->content[0]->img ?>"/>
-
     </head>
+
     <body>
+        <!-- Tracking -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-8155451-6', 'auto');
+            ga('send', 'pageview');
+        </script>
 
-<!-- Tracking -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        <hr />
 
-  ga('create', 'UA-8155451-6', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-        <div id="title"><?php echo $script->title ?></div>
-        <div id="container">
-            <img width="500" height="400" src="" />
-            <div id="captions">Cargando...</div>
+        <div class="row">
+            <div class="panel comedy">
+                <h3><?php echo $script->title ?></h3>
+                <div id="container">
+                    <img src="" />
+                    <div id="captions">Cargando...</div>
+                </div>
+            </div>
         </div>
 
-        <footer>
-            <iframe style="width: 80px;height: 20px;" src="//www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fcomedia.l3pro.com%2F<?php echo $_GET['script'] ?>&amp;layout=button" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowTransparency="true"></iframe>
-            <a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script><br />
-            (c) <?php echo date('Y') ?> Leprosystems
-        </footer>
-        <script
-            src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <hr />
+
+        <div class="row share">
+            <div class="large-6 medium-6 columns">
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_sharing_toolbox"></div>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row footer">
+            <p>(c)<?php echo date('Y') ?> Leprosystems<br /><a class="tiny radius button" href="new.php">¡Crea tu propia comedia!</a></p>
+        </div>
+        <div class="row footer">
+            <!-- Adsense -->
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Comedia ad -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:320px;height:100px"
+                 data-ad-client="ca-pub-1241131205896179"
+                 data-ad-slot="7257820885"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <script src="js/vendor/jquery.js"></script>
+        <script src="js/foundation.min.js"></script>
         <script>
+            $(document).foundation();
+
             var scene = <?php echo json_encode($script->content) ?>;
             var i = 0;
 
             function changeSlide(src, caption) {
-                $('#container img').attr('src', 'img/' + src);
+                $('#container img').attr('src', 'upimg/' + src);
                 $('#captions').html(caption);
             }
 
@@ -127,27 +140,14 @@ if (!isset($_GET['script'])) {
             // Preload images
             for (j = 0; j < scene.length; ++j) {
                 var image = new Image();
-                image.src = 'img/' + scene[j].img;
+                image.src = 'upimg/' + scene[j].img;
             }
 
             // Load first slide
             $( window ).load(function() {
                 nextSlide();
             })
-    
-        </script>
 
-        <!-- Adsense -->
-        <div id="ads">
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- Comedia ad -->
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:320px;height:100px"
-                 data-ad-client="ca-pub-1241131205896179"
-                 data-ad-slot="7257820885"></ins>
-            <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
+        </script>
     </body>
 </html>
