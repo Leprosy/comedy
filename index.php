@@ -23,9 +23,6 @@ if (!isset( $script->title )) {
         <link rel="stylesheet" href="css/foundation.min.css" />
         <script src="js/vendor/modernizr.js"></script>
 
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5494544d7a549c3b" async="async"></script>
-        
         <style>
             /* Comedia - Leprosystems */
             .share {}
@@ -53,7 +50,6 @@ if (!isset( $script->title )) {
                 bottom: 0;
                 position: absolute;
                 color: #fff;
-                font-size: 1.2em;
                 text-shadow: 2px 2px 1px #000;
                 font-weight: bold;
             }
@@ -78,7 +74,7 @@ if (!isset( $script->title )) {
                 <h3><?php echo $script->title ?></h3>
                 <div id="container">
                     <img src="" />
-                    <div id="captions">Cargando...</div>
+                    <h4 id="captions">Cargando...</h4>
                 </div>
             </div>
         </div>
@@ -87,8 +83,6 @@ if (!isset( $script->title )) {
 
         <div class="row share">
             <div class="large-6 medium-6 columns">
-                <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                <div class="addthis_sharing_toolbox"></div>
             </div>
         </div>
 
