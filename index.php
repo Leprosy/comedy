@@ -53,7 +53,7 @@ if (!isset( $script->title )) {
                 bottom: 0;
                 position: absolute;
                 color: #fff;
-                font-size: 1.5em;
+                font-size: 1.2em;
                 text-shadow: 2px 2px 1px #000;
                 font-weight: bold;
             }
