@@ -42,12 +42,12 @@ if (isset($_POST['title'])) {
             <h3>Elija animación:</h3>
             <?php
 
-            if ($handle = opendir(__DIR__ . '/upimg/')) {
+            if ($handle = opendir(__DIR__ . '/upimg-thumb/')) {
                 /* This is the correct way to loop over the directory. */
                 while (false !== ($entry = readdir($handle))) {
                 	if ($entry!='.' && $entry!='..') {
                 		?>
-                		<a class="th" href="javascript:void(0)" onclick="setAnim(this)"><img src="upimg/<?php echo $entry ?>" /></a>
+                		<a class="th" href="javascript:void(0)" onclick="setAnim(this)"><img src="upimg-thumb/<?php echo $entry ?>" /></a>
                 		<?php
                 	}
                 }
@@ -142,7 +142,7 @@ if (isset($_POST['title'])) {
             }
 
             function setAnim(an) {
-                var path = an.children[0].src.split('/').pop();
+                var path = an.children[0].src.split('/').pop().replace('.png', '.gif');
                 elem.value = path;
                 $('#imgs').foundation('reveal', 'close');
             }
