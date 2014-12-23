@@ -75,12 +75,21 @@ if (isset($_POST['title'])) {
             <div class="row">
                 <div class="large-12 columns" id="frames">
                     <fieldset>
-                        <legend>Cuadro 1:</legend>
+                        <legend><span>Cuadro 1:</span> <a href="javascript:void(0)" onclick="deleteFrame(this)">(Eliminar)</a></legend>
+
                         <div class="large-6 columns">
-                            <label>Imagen:
-                                <input type="text" name="img[]" onclick="selectImg(this)" />
-                            </label>
+                            <div class="row collapse">
+                                <label>Imagen:</label>
+                                <div class="small-10 columns">
+                                    <input type="text" name="img[]" readonly="true" />
+                                </div>
+                                <div class="small-2 columns">
+                                    <a href="javascript:void(0)" onclick="selectImg(this)" class="button postfix">Elegir</a>
+                                </div>
+
+                            </div>
                         </div>
+
 
                         <div class="large-6 columns">
                             <label>Duración:
@@ -128,7 +137,7 @@ if (isset($_POST['title'])) {
 
             function addFrame() {
                 var frame = $('#frames fieldset:last-child').clone();
-                frame.children()[0].innerHTML = "Cuadro " + (1 + $('#frames fieldset').length) +" :";
+                frame.children()[0].children[0].innerHTML = "Cuadro " + (1 + $('#frames fieldset').length) +" :";
                 $('#frames').append(frame);
             }
 
@@ -139,8 +148,22 @@ if (isset($_POST['title'])) {
             }
 
             function selectImg(el) {
-                elem = el;
+                elem = el.parentNode.parentNode.children[1].children[0];
                 $('#imgs').foundation('reveal', 'open');
+            }
+
+            function deleteFrame(el) {
+                if ($('fieldset').length < 2) {
+                    alert('El diálogo debe tener al menos un cuadro...');
+                } else if (confirm('¿Desea eliminar este cuadro?')) {
+                    $(el.parentNode.parentNode).remove();
+
+                    var num = 1;
+
+                    $('fieldset').each(function (i, fs) {
+                        fs.children[0].children[0].innerHTML = 'Cuadro ' + (num++) + ' :';
+                    });
+                }
             }
         </script>
     </body>
