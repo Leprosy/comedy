@@ -1,1 +1,5 @@
 scripts/*
+.venv
+backend/__pycache__
+backend/data.db
+node_modules
