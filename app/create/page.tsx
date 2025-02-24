@@ -1,9 +1,8 @@
 "use client";
 
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { SlideData } from "../api/list/route";
 import { Input, InputValidators } from "../_components/Input";
-import Image from "next/image";
 import { ModalContext } from "../_contexts/Modal";
 
 export default function Home() {
@@ -52,33 +51,6 @@ export default function Home() {
     </div>
   );
 }
-
-const GifPicker = () => {
-  const [files, setFiles] = useState<string[]>([]);
-  useEffect(() => {
-    const fetchList = async () => {
-      const req = await fetch("/api/gifs");
-      const data = await req.json();
-      setFiles(data.files);
-    };
-
-    fetchList();
-  }, []);
-
-  return (
-    <div>
-      <h1>Pick one</h1>
-
-      <div className="grid grid-cols-4 gap-2">
-        {files.map((item: string, i: number) => (
-          <div key={i}>
-            <Image alt={item} src={`/img/${item}`} width={150} height={150} unoptimized={true} />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
 
 function SlideForm({
   slide,
