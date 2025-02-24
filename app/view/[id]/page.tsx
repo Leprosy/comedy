@@ -1,7 +1,7 @@
 "use client";
 import Slide from "@/app/_components/Slide";
 import Title from "@/app/_components/Title";
-import { DataItem } from "@/app/api/list/route";
+import { DataItem } from "@/app/types";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 

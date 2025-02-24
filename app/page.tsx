@@ -1,6 +1,8 @@
 import Link from "next/link";
-import { DataItem } from "./api/list/route";
 import Title from "./_components/Title";
+import { DataItem } from "./types";
+
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const data = await fetch(`${process.env.BASE_URL}api/list`);

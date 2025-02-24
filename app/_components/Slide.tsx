@@ -1,6 +1,6 @@
 "use client";
-import { SlideData } from "@/app/api/list/route";
 import Image from "next/image";
+import { SlideData } from "../types";
 
 export default function Slide({ slide }: { slide: SlideData }) {
   return (

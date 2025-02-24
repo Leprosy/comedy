@@ -52,7 +52,8 @@ export const InputValidators = {
   length: (msg, params) => {
     return (value) => (value.length >= (params.min || 0) && value.length <= (params.max || Infinity) ? null : msg);
   },
-} satisfies Record<string, (msg: string, params?: unknown) => Validator>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+} satisfies Record<string, (msg: string, params?: any) => Validator>;
 
 export const InputFilters = {
   trim: (value) => value.trim(),

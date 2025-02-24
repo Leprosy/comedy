@@ -1,5 +1,5 @@
 import { DataItem } from "@/app/types";
-import { appData } from "../crappyDb";
+import { appData } from "../../data/crappyDb";
 
 export async function GET() {
   return Response.json(

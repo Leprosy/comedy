@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { SlideData } from "../api/list/route";
 import { Input, InputFilters, InputValidators } from "../_components/Input";
+import { SlideData } from "../types";
 
 export default function Home() {
   const [slides, setSlides] = useState<SlideData[]>([]);

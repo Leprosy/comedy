@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
-import { appData, DataItem } from "../../list/route";
+import { appData } from "../../../data/crappyDb";
+import { DataItem } from "@/app/types";
 
 export async function GET(request: NextRequest, { params }: { params: Promise<{ id: number }> }) {
   const { id } = await params;
