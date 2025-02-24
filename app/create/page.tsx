@@ -1,9 +1,9 @@
 "use client";
 
 import { useContext, useRef, useState } from "react";
-import { SlideData } from "../api/list/route";
 import { Input, InputValidators } from "../_components/Input";
 import { ModalContext } from "../_contexts/Modal";
+import { SlideData } from "../types";
 
 export default function Home() {
   const [slides, setSlides] = useState<SlideData[]>([]);
